@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:a="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+<h1 style="text-align: center;">Users List</h1>
+
+<!-- Таблица для отображения машин -->
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>firstName</th>
+        <th>lastName</th>
+        <th>email</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Итерация по списку машин -->
+    <tr th:each="user : ${users}">
+        <td th:text="${user.id}">ID</td>
+        <td th:text="${user.firstName}">firstName</td>
+        <td th:text="${user.lastName}">lastName</td>
+        <td th:text="${user.email}">email</td>
+        <td>
+            <button> <a th:href="@{/edit/{id}(id=${user.id})}">Edit</a></button>
+            <button> <a th:href="@{/delete/{id}(id=${user.id})}">Delete</a></button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<div style="text-align: center">
+    <button>  <a th:href="@{/new}" class="ui-icon-bullet">Add user</a></button>
+</div>
+
+</button>
+</body>
+</html>
